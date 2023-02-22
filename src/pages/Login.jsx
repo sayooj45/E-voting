@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import axios from "axios";
 import "./Login.css";
 import { useNavigate } from "react-router-dom";
@@ -42,6 +42,22 @@ function Login() {
       })
       
   };
+
+
+
+  useEffect(() => {
+    window.history.pushState(null, null, window.location.pathname);
+    window.addEventListener("popstate", onBackButtonEvent);
+    return () => {
+      window.removeEventListener("popstate", onBackButtonEvent);
+    };
+  }, []);
+
+  function onBackButtonEvent(e) {
+    e.preventDefault();
+    window.history.forward();
+  }
+
 
   return (
     <div className="body">
