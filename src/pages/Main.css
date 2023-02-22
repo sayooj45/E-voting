@@ -1,0 +1,117 @@
+
+body{
+    background-color: #9AC1F0;
+}
+
+.nav{
+    background-color: antiquewhite;
+    color: rgb(233, 91, 91);
+    font-weight: 700;
+}
+.nav-head{
+    font-size: 30px;
+    font-family: 'Times New Roman', Times, serif;
+    font-style: italic;
+    font-weight: 700;
+    color: rgb(9, 45, 223);
+    text-shadow: 1px 1px 2px pink;
+}
+.img{
+    height: 50px;
+    width: 80px;
+    border-radius: 10px;
+}
+
+.side-bar{
+   height: 100vh;
+}
+
+.add-candidate{
+    margin-top: 100px;
+}
+
+/* 
+.table-border{
+    text-align: center;
+    width: 80%;
+    margin: auto;
+}
+
+    table {
+border-collapse: collapse;
+width: 80%;
+text-align: center; 
+margin:150px auto; 
+
+}
+
+th, td ,tr{
+text-align: center;
+padding: 8px;
+border: 2px solid black;
+}
+
+tr:nth-child(even) {
+background-color: #2fd6d6;
+} */
+/* table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  th, td {
+    text-align: left;
+    padding: 8px;
+  }
+  
+  tr:nth-child(even){background-color: #922121}
+  
+  th {
+    background-color: #04AA6D;
+    color: white;
+  } */
+
+  .table-border{
+    text-align: center;
+    width: 80%;
+    margin: 100px auto;
+}
+.table-head{
+    background-color: rgb(17, 17, 16);
+    color: white;
+}
+
+  td,th{
+    border: 1px solid black ;
+}
+
+
+    table {
+border-collapse: collapse;
+width: 100%;
+
+
+}
+
+th, td {
+text-align: center;
+padding: 8px;
+}
+
+tr:nth-child(even) {
+background-color: #D6EEEE;
+}
+
+.btn{
+    float: right;
+    background-color: black;
+    color: white;
+    
+}
+.btn:hover{
+    background-color: white;
+    color: black;
+}
+.logout{
+    cursor: pointer;
+}
