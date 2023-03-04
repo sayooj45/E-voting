@@ -18,7 +18,7 @@ function Main() {
   // const [candidateId,setcandidateId] = useState([]);
 
   useEffect(() => {
-    const baseURL = "http://192.168.29.12:5000/vote/getCandidates";
+    const baseURL = `${baseUrl}/vote/getCandidates`;
     axios
       .get(baseURL)
       .then((response) => {
@@ -30,36 +30,27 @@ function Main() {
         console.error(error);
       });
   }, []);
-        const navigate = useNavigate()
-      const logout =()=>{
-        navigate('/')
-      }
+  const navigate = useNavigate();
+  const logout = () => {
+    navigate("/");
+  };
 
+  const handleChange = (id) => {
+    axios
+      .post(`${baseUrl}/vote/deleteCandidate`, {
+        candidate_id: id,
+      })
+      .then((response) => {
+        console.log(response);
+        window.location.reload();
 
+        // navigate('/home')
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
-      const handleChange =(id)=>{
-       
-        
-      
-        
-        axios.post(`${baseUrl}/vote/deleteCandidate`,{
-
-        
-          
-          candidate_id: id
-         
-        })
-        .then((response)=>{
-          console.log(response)
-          window.location.reload();
-         
-          // navigate('/home')
-        })
-        .catch ((error)=>{
-        console.log(error)})
-        
-      }
-  
   return (
     <div>
       {/* navbar */}
@@ -74,7 +65,7 @@ function Main() {
               navbarScroll
             ></Nav>
             <Nav.Link href="#" className="view-result mx-2">
-             Home
+              Home
             </Nav.Link>
             <Nav.Link href="/votelist" className="view-result mx-2">
               View Result
@@ -109,7 +100,7 @@ function Main() {
                 <td>{candidate.candidate_id}</td>
                 <td>{candidate.candidate_name}</td>
                 <td>
-                  <MdDeleteForever onClick={() => handleChange(candidate.id) } />
+                  <MdDeleteForever onClick={() => handleChange(candidate.id)} />
                 </td>
               </tr>
             ))}

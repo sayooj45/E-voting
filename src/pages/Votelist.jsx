@@ -1,4 +1,3 @@
-
 import "./Votelist.css";
 import React, { useState, useEffect } from "react";
 
@@ -12,35 +11,29 @@ import Navbar from "react-bootstrap/Navbar";
 import { CgLogOff } from "react-icons/cg";
 import { useNavigate } from "react-router-dom";
 import voteimg from "../components/images/vote.jpg";
+import { baseUrl } from "../config/urls.config";
 
 function Votelist() {
+  const [vote, setVote] = useState([]);
 
-    const [vote,setVote]=useState([]);
+  const navigate = useNavigate();
+  const logout = () => {
+    navigate("/");
+  };
 
-    const navigate=useNavigate()
-      const logout =()=>{
-        navigate('/')
-      }
-
-
-    useEffect(() => {
-        const URL = "http://192.168.29.12:5000/vote/getCandidateVotes";
-        axios
-          .get(URL)
-          .then((response) => {
-            const votes = response.data;
-            console.log(response.data);
-            setVote(votes.candidates);
-          })
-          .catch((error) => {
-            console.error(error);
-          });
-      }, []);
-
-
-     
-
-
+  useEffect(() => {
+    const URL = `${baseUrl}/vote/getCandidateVotes`;
+    axios
+      .get(URL)
+      .then((response) => {
+        const votes = response.data;
+        console.log(response.data);
+        setVote(votes.candidates);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, []);
 
   return (
     <div>
@@ -56,17 +49,12 @@ function Votelist() {
               navbarScroll
             ></Nav>
             <Nav.Link href="/home" className="view-result mx-2">
-             Home
+              Home
             </Nav.Link>
             <Nav.Link href="#" className="view-result mx-2">
               View Result
             </Nav.Link>
-            {/* <Nav.Link href="#" active className="mx-2">
-              Lock & Start
-            </Nav.Link>
-            <Nav.Link href="#" active className="mx-2">
-              End Vote & Lock
-            </Nav.Link> */}
+
             <span className="mx-2 logout" onClick={logout}>
               Logout
               <CgLogOff />
@@ -75,6 +63,7 @@ function Votelist() {
         </Container>
       </Navbar>
       {/* navbar */}
+
       {/* table */}
       <div className="table-border">
         <table>
@@ -90,21 +79,12 @@ function Votelist() {
               <tr>
                 <td>{votes.candidate_id}</td>
                 <td>{votes.candidate_name}</td>
-                <td>
-                  {votes.vote_count}
-                </td>
+                <td>{votes.vote_count}</td>
               </tr>
             ))}
           </tbody>
         </table>
-      </div>
-      {/* <div className="p-5">
-        <Link to="/user">
-          <button className="btn " type="button">
-            Add Candidate
-          </button>
-        </Link>
-      </div> */}
+      </div> 
     </div>
   );
 }
